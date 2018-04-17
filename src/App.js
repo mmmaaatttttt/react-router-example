@@ -43,6 +43,13 @@ const Instructor = props => {
   );
 };
 
+const Secret = props => (
+  <div>
+    <h1>YOU FOUND A SECRET!</h1>
+    <iframe src={props.src} width="480" height="480" />
+  </div>
+);
+
 class App extends Component {
   render() {
     return (
@@ -50,6 +57,27 @@ class App extends Component {
         <Route path="/" exact component={Home} />
         <Route path="/contact" component={Contact} />
         <Route path="/about" component={About} />
+        <Route
+          path="/minions"
+          component={props => (
+            <Secret src="https://giphy.com/embed/11sBLVxNs7v6WA" {...props} />
+          )}
+        />
+        <Route
+          path="/colbert"
+          component={props => (
+            <Secret src="https://giphy.com/embed/yow6i0Zmp7G24" {...props} />
+          )}
+        />
+        {/* 
+        This doesn't work, breaks react :(
+        <Route path="/minions" component={<Secret src="https://giphy.com/embed/11sBLVxNs7v6WA" />} /> */}
+
+        {/* 
+        this doesn't work, the child is ALWAYS rendered :(
+        <Route path="/minions" exact>
+          <Secret src="https://giphy.com/embed/11sBLVxNs7v6WA" />
+        </Route> */}
         <Route path="/instructors/:name/:school" component={Instructor} />
       </div>
     );
