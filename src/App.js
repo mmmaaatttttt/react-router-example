@@ -34,6 +34,15 @@ const Contact = () => (
   </div>
 );
 
+const Instructor = props => {
+  const { school, name } = props.match.params;
+  return (
+    <h1>
+      Hi my name is {name} and I am an instructor at {school}!
+    </h1>
+  );
+};
+
 class App extends Component {
   render() {
     return (
@@ -41,6 +50,7 @@ class App extends Component {
         <Route path="/" exact component={Home} />
         <Route path="/contact" component={Contact} />
         <Route path="/about" component={About} />
+        <Route path="/instructors/:name/:school" component={Instructor} />
       </div>
     );
   }
